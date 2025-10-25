@@ -54,7 +54,12 @@ public unsafe class Program
             for (int i = 0; i < win.Length; i++)
             {
                 win[i].NewInputFrame();
-                NativeWindow.ProcessWindowEvents(waitForEvents: false);
+            }
+
+            NativeWindow.ProcessWindowEvents(waitForEvents: false);
+
+            for (int i = 0; i < win.Length; i++)
+            {
                 if (win[i].KeyboardState.IsKeyReleased(Keys.Escape) || GLFW.WindowShouldClose(win[i].WindowPtr))
                 {
                     running = false;
