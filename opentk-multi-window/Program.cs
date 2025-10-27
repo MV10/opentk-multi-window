@@ -10,17 +10,17 @@ namespace opentkmulti;
 
 public unsafe class Program
 {
-    private static readonly Vector3[] ClearColors = new Vector3[]
-    {
+    private static readonly Vector3[] ClearColors =
+    [
         new Vector3(1.0f, 0.0f, 0.0f), // red
         new Vector3(0.0f, 1.0f, 0.0f), // green
         new Vector3(0.0f, 0.0f, 1.0f)  // blue
-    };
+    ];
 
-    static bool running = true;
-    static NativeWindow[] win = new NativeWindow[3];
+    private static bool running = true;
+    private static readonly NativeWindow[] win = new NativeWindow[3];
 
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
@@ -36,7 +36,7 @@ public unsafe class Program
 
         for (int i = 0; i < 3; i++)
         {
-            var windowSettings = new NativeWindowSettings
+            var settings = new NativeWindowSettings
             {
                 ClientSize = new Vector2i(400, 300),
                 Location = new Vector2i(100 + i * 450, 100), // h-offset
@@ -46,7 +46,7 @@ public unsafe class Program
                 Profile = ContextProfile.Core
             };
 
-            win[i] = new NativeWindow(windowSettings);
+            win[i] = new NativeWindow(settings);
         }
 
         while (running)
